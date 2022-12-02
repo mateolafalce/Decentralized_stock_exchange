@@ -2,7 +2,7 @@
 seeds = false
 skip-lint = false
 [programs.devnet]
-solotery = "FMz7qxxUeqgCKZL2z96nBhp6mpyisdVEEuS4ppZG3bmH"
+decentralized_exchange = "CGwsUpeGg6gpnFQwgLy1QCv2YBZu55awopFYfkuLm4h1"
 
 [registry]
 url = "https://api.apr.dev"
@@ -12,6 +12,16 @@ cluster = "devnet"
 wallet = "/home/mateo/.config/solana/id.json"
 
 [scripts]
-create = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/Create.ts"
-ticket = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/Ticket.ts"
-check = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/Check.ts"
+create = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/System.ts"
+stock = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/Stock.ts"
+checkstock = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/checkStock.ts"
+holder = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/InitHolderAccount.ts"
+ipo = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/Ipo.ts"
+initsell = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/InitSellAccount.ts"
+sell = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/SellOffer.ts"
+checksell = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/checkSellOffer.ts"
+cancelsell = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/CancelSellOffer.ts"
+initbuy = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/InitBuyAccount.ts"
+buyoffer = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/BuyOffer.ts"
+cancelbuy = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/CancelBuyOffer.ts"
+checkbuy = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/checkBuyOffer.ts"

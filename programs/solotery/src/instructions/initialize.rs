@@ -2,30 +2,25 @@ use anchor_lang::{
     prelude::*,
     solana_program::pubkey::Pubkey,
 }; 
-use std::str::FromStr;
 use crate::state::accounts::*;
 
-pub fn create_stake(
-    ctx: Context<Create>
+pub fn initialize_decentralized_exchange_system(
+    ctx: Context<Initialize>
 ) -> Result<()> {
-    let solotery: &mut Account<SoLotery> = &mut ctx.accounts.solotery;
-    let (_stake_pda, bump) = Pubkey::find_program_address(&[b"SOLotery"], &Pubkey::from_str("FMz7qxxUeqgCKZL2z96nBhp6mpyisdVEEuS4ppZG3bmH").unwrap());
-    solotery.bump_original = bump;
-    solotery.players1 = [].to_vec();
-    solotery.players2 = [].to_vec();
-    solotery.time_check = 1662260159;
-    solotery.players_state = false;
-    solotery.winner1_selected = false;
-    solotery.winner2_selected = false;
-    solotery.tickets_sold = 0;
-    solotery.winner_publickey = Pubkey::from_str("11111111111111111111111111111111").unwrap();
+    let system: &mut Account<SystemExchangeAccount> = &mut ctx.accounts.decentralized_exchange_system;
+    let (_pda, bump) = Pubkey::find_program_address(&[b"System Account"], ctx.program_id);
+    system.bump_original = bump;
+    system.total_stock_companies = 0;
+    system.historical_exchanges = 0;
+    system.total_holders = 0;
+    system.total_offers = 0;
     Ok(())
 }
 
 #[derive(Accounts)]
-pub struct Create<'info> {
-    #[account(init, seeds = [b"SOLotery"], bump, payer = user, space = SoLotery::SIZE + 8)]
-    pub solotery: Account<'info, SoLotery>,
+pub struct Initialize<'info> {
+    #[account(init, seeds = [b"System Account"], bump, payer = user, space = SystemExchangeAccount::SIZE + 8)]
+    pub decentralized_exchange_system: Account<'info, SystemExchangeAccount>,
     #[account(mut)]
     pub user: Signer<'info>,
     pub system_program: Program<'info, System>,

@@ -1,18 +1,60 @@
 use anchor_lang::prelude::*;
 
 #[account]
-pub struct SoLotery { 
-    pub bump_original: u8,       // 1
-    pub winner_publickey: Pubkey,// 32
-    pub players_state: bool,     // 1
-    pub players1: Vec<Pubkey>,   // 4 + (32*300)
-    pub players2: Vec<Pubkey>,   // 4 + 32 
-    pub time_check: i64,         // 8
-    pub winner1_selected: bool,  // 1
-    pub winner2_selected: bool,  // 1
-    pub tickets_sold: u64        // 8
+pub struct SystemExchangeAccount { 
+    pub bump_original: u8,               // 1
+    pub total_stock_companies: u32,      // 4
+    pub historical_exchanges: u64,       // 8
+    pub total_holders: u64,              // 8
+    pub total_offers: u64                // 8
 }
 
-impl SoLotery {
-    pub const SIZE: usize =  1 + 32 + 1 + 4 + (32 * 300) + 4 + 32 + 8 + 1 + 1 + 8;
+#[account]
+pub struct StockAccount {
+    pub bump_original: u8,              // 1
+    pub pubkey_original: Pubkey,        // 32
+    pub initials: String,               // 4 + 3
+    pub name: String,                   // 4 + 50
+    pub description: String,            // 4 + 200
+    pub total_supply: u64,              // 8
+    pub supply_in_position: u64,        // 8
+    pub holders: u64,                   // 8
+    pub dividends: bool,                // 1
+    pub dividend_payment_period: i64,   // 8
+    pub date_to_go_public: i64,         // 8 
+    pub price_to_go_public: u64,        // 8
+    pub current_offers: u32,            // 4
+}
+
+#[account]
+pub struct HolderAccount { 
+    pub bump_original: u8,               // 1
+    pub participation: u64,              // 8
+    pub commercial_participation: u64,   // 8
+    pub holder_pubkey: Pubkey            // 32
+}
+
+#[account]
+pub struct SellOrBuyAccount { 
+    pub bump_original: u8,               // 1
+    pub sell_or_buy_amount: Vec<u64>,    // 4 + 8
+    pub price: Vec<u64>,                 // 4 + 8
+    pub pubkey: Pubkey,                  // 32
+    pub len: u64                         // 8
+}
+
+impl SellOrBuyAccount {
+    pub const SIZE: usize = 1 + 4 + 8 + 4 + 8 + 32 + 8;
+}
+
+impl HolderAccount {
+    pub const SIZE: usize = 1 + 8 + 8 + 32;
+}
+
+impl StockAccount {
+    pub const SIZE: usize =  1 + 32 + 4 + 3 + 4 + 50 + 4 + 200 + 8 + 8 + 1 + 8 + 8 + 8 + 4 + 8;
+}
+
+impl SystemExchangeAccount {
+    pub const SIZE: usize =  1 + 4 + 8 + 8 + 8;
 }
