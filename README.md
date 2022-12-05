@@ -1,2 +1,2 @@
-# 🍀⛓️SOLotery⛓️🍀
-The SOLotery program running in Solana
+# Decentralized Stock Exchange
+A decentralized stock exchange in the Solana Blockchain
