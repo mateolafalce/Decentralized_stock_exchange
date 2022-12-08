@@ -15,7 +15,6 @@ pub fn init_holder_account(
         let stock_account: &mut Account<StockAccount> = &mut ctx.accounts.stock_account;
         holder_account.bump_original = bump;
         holder_account.participation = 0;
-        holder_account.commercial_participation = 0;
         holder_account.holder_pubkey = ctx.accounts.from.key();
         stock_account.holders += 1;
         system.total_holders += 1;

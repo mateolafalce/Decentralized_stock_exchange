@@ -4,16 +4,12 @@ import { Stock } from "./Account";
 import { LAMPORTS_PER_SOL } from '@solana/web3.js';
 
 
-describe("Creating System Account", () => {
+describe("Check Stock Account", () => {
   const program = anchor.workspace.DecentralizedExchange as anchor.Program<DecentralizedExchange>;
     it("Created", async () => {
-
-
       const Account = await program.account.stockAccount.fetch(Stock)
       console.log("---------------------------------------------")
       console.log("PDA: ", Stock.toBase58());
-      console.log("---------------------------------------------")
-      console.log("Initials: ", Account.initials.toString())
       console.log("---------------------------------------------") 
       console.log("Name: ", Account.name);
       console.log("---------------------------------------------")

@@ -2,7 +2,7 @@
 seeds = false
 skip-lint = false
 [programs.devnet]
-decentralized_exchange = "CGwsUpeGg6gpnFQwgLy1QCv2YBZu55awopFYfkuLm4h1"
+decentralized_exchange = "5qaT6PTo8sae3WKswqi28yafw327ri47X9X3QRtcauEQ"
 
 [registry]
 url = "https://api.apr.dev"

@@ -6,7 +6,7 @@ pub mod errors;
 pub mod instructions;
 pub mod state;
 
-declare_id!("CGwsUpeGg6gpnFQwgLy1QCv2YBZu55awopFYfkuLm4h1");
+declare_id!("5qaT6PTo8sae3WKswqi28yafw327ri47X9X3QRtcauEQ");
 
 #[program]
 pub mod decentralized_exchange {
@@ -16,7 +16,6 @@ pub mod decentralized_exchange {
     }
     pub fn create_stock(
         ctx: Context<CreateStock>,
-        initials: String,
         name: String,                   
         description: String,            
         total_supply: u64,              
@@ -27,7 +26,6 @@ pub mod decentralized_exchange {
     ) -> Result<()> {
         instructions::create_stock::create_stock(
             ctx,
-            initials,
             name,
             description,
             total_supply,
@@ -67,7 +65,7 @@ pub mod decentralized_exchange {
             price
         )
     }
-    pub fn cancel_sell(
+    /*pub fn cancel_sell(
         ctx: Context<CancelSellOffer>,
         price_to_cancel: u64
     ) -> Result<()> {
@@ -75,7 +73,7 @@ pub mod decentralized_exchange {
             ctx,
             price_to_cancel
         )
-    }
+    }*/
     pub fn init_buy_account(
         ctx: Context<InitBuyAccount>
     ) -> Result<()> {
@@ -92,7 +90,7 @@ pub mod decentralized_exchange {
             price
         )
     }
-    pub fn cancel_buy(
+    /*pub fn cancel_buy(
         ctx: Context<CancelBuyOffer>,
         price_to_cancel: u64
     )-> Result<()> {
@@ -100,7 +98,7 @@ pub mod decentralized_exchange {
             ctx,
             price_to_cancel
         )
-    }
+    }*/
     pub fn accept_a_sell(
         ctx: Context<AcceptASell>,
         price: u64

@@ -2,7 +2,6 @@ use anchor_lang::error_code;
 
 #[error_code]
 pub enum ErrorCode {
-    #[msg("The initials of the company must be equal to 3 characters")]InitialError,
     #[msg("The company name must have less than or equal to 50 characters")]NameError,
     #[msg("The description of the company must have less than or equal to 200 characters")]DescriptionError,
     #[msg("The company cannot go public in the past")]Date,

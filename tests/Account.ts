@@ -4,11 +4,11 @@ anchor.setProvider(provider);
 export const wallet = provider.wallet as anchor.Wallet;
 
 export const System = new anchor.web3.PublicKey(
-    "CKNx7ENVVCyYYNkiwAWqvHs13opQVveVpiC1yUfamr3N"
+    "4UcaPu7YLCk9vZc74wePKCtHfKxYKz9JAdFzTSqeURTC"
 );
 
 export const Stock = new anchor.web3.PublicKey(
-    "GNXKwmJNntBn3EHMMxDgrCyhKfZ1yeVALmwrt41MyGQf"
+    "3fdKayUKXJNekqyuJYQsaGSmKPRgheP4PbV5JdkLK7VV"
 );
 
 export const HolderPDA = new anchor.web3.PublicKey(

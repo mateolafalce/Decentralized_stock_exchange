@@ -13,7 +13,6 @@ pub struct SystemExchangeAccount {
 pub struct StockAccount {
     pub bump_original: u8,              // 1
     pub pubkey_original: Pubkey,        // 32
-    pub initials: String,               // 4 + 3
     pub name: String,                   // 4 + 50
     pub description: String,            // 4 + 200
     pub total_supply: u64,              // 8
@@ -30,7 +29,6 @@ pub struct StockAccount {
 pub struct HolderAccount { 
     pub bump_original: u8,               // 1
     pub participation: u64,              // 8
-    pub commercial_participation: u64,   // 8
     pub holder_pubkey: Pubkey            // 32
 }
 
@@ -48,11 +46,11 @@ impl SellOrBuyAccount {
 }
 
 impl HolderAccount {
-    pub const SIZE: usize = 1 + 8 + 8 + 32;
+    pub const SIZE: usize = 1 + 8 + 32;
 }
 
 impl StockAccount {
-    pub const SIZE: usize =  1 + 32 + 4 + 3 + 4 + 50 + 4 + 200 + 8 + 8 + 1 + 8 + 8 + 8 + 4 + 8;
+    pub const SIZE: usize =  1 + 32 + 4 + 50 + 4 + 200 + 8 + 8 + 1 + 8 + 8 + 8 + 4 + 8;
 }
 
 impl SystemExchangeAccount {

@@ -31,7 +31,6 @@ pub fn buy_offer(
         buy_offer.len += 16;
         system.total_offers += 1;
         stock_account.current_offers += 1;
-        holder_account.commercial_participation -= buy_amount;
         Ok(())
     }
 

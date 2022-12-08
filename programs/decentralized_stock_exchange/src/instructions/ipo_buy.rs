@@ -25,7 +25,6 @@ pub fn buy_in_initial_public_offering(
         let holder_account: &mut Account<HolderAccount> = &mut ctx.accounts.holder_account;  
         let stock_account: &mut Account<StockAccount> = &mut ctx.accounts.stock_account;
         holder_account.participation = amount;
-        holder_account.commercial_participation = amount;
         stock_account.supply_in_position -= amount;
         system.historical_exchanges += 1;
         Ok(())

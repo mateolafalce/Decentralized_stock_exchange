@@ -4,7 +4,7 @@ import { wallet, System } from "../tests/Account";
 import { PublicKey, LAMPORTS_PER_SOL } from '@solana/web3.js';
 
 
-describe("Creating System Account", () => {
+describe("Creating Stock Account", () => {
   const program = anchor.workspace.DecentralizedExchange as anchor.Program<DecentralizedExchange>;
     it("Created", async () => {
       const [StockPDA, _bump] = await PublicKey
@@ -16,7 +16,6 @@ describe("Creating System Account", () => {
         program.programId
       )
       const tx = await program.methods.createStock(
-        "H.C",
         "Hardly Company",
         "A hardly compñy focused",
         new anchor.BN(100000000),
@@ -36,8 +35,6 @@ describe("Creating System Account", () => {
       console.log("Your transaction signature: ", tx);
       console.log("---------------------------------------------")
       console.log("PDA: ", StockPDA.toBase58());
-      console.log("---------------------------------------------")
-      console.log("Initials: ", Account.initials.toString())
       console.log("---------------------------------------------") 
       console.log("Name: ", Account.name);
       console.log("---------------------------------------------")

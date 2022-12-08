@@ -8,7 +8,6 @@ use crate::errors::ErrorCode;
 
 pub fn create_stock(
         ctx: Context<CreateStock>,
-        initials: String,
         name: String,                   
         description: String,            
         total_supply: u64,              
@@ -18,7 +17,6 @@ pub fn create_stock(
         price_to_go_public: u64      
     ) -> Result<()> {
         let (_stock_pda, bump) = Pubkey::find_program_address(&[b"Stock Account", ctx.accounts.from.key().as_ref()], ctx.program_id);
-        require!(initials.len() == 3, ErrorCode::InitialError);
         require!(name.len() <= 50, ErrorCode::NameError);
         require!(description.len() <= 200, ErrorCode::DescriptionError);
         require!(date_to_go_public > Clock::get().unwrap().unix_timestamp, ErrorCode::Date);
@@ -27,7 +25,6 @@ pub fn create_stock(
         system.total_stock_companies += 1;
         stock_account.bump_original = bump;
         stock_account.pubkey_original = ctx.accounts.from.key();
-        stock_account.initials = initials;
         stock_account.name = name;
         stock_account.description = description;
         stock_account.total_supply = total_supply;
