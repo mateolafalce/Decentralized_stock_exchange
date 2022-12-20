@@ -65,7 +65,7 @@ pub mod decentralized_exchange {
             price
         )
     }
-    /*pub fn cancel_sell(
+    pub fn cancel_sell(
         ctx: Context<CancelSellOffer>,
         price_to_cancel: u64
     ) -> Result<()> {
@@ -73,7 +73,7 @@ pub mod decentralized_exchange {
             ctx,
             price_to_cancel
         )
-    }*/
+    }
     pub fn init_buy_account(
         ctx: Context<InitBuyAccount>
     ) -> Result<()> {
@@ -90,7 +90,7 @@ pub mod decentralized_exchange {
             price
         )
     }
-    /*pub fn cancel_buy(
+    pub fn cancel_buy(
         ctx: Context<CancelBuyOffer>,
         price_to_cancel: u64
     )-> Result<()> {
@@ -98,7 +98,7 @@ pub mod decentralized_exchange {
             ctx,
             price_to_cancel
         )
-    }*/
+    }
     pub fn accept_a_sell(
         ctx: Context<AcceptASell>,
         price: u64
